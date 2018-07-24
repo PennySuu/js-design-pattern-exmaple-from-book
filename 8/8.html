@@ -313,7 +313,7 @@
 				if (cache[key]) {
 					if (fn) {
 						for (var i = cache[key].length; i >= 0; i--) {
-							if (cache[key] === fn) {
+							if (cache[key][i] === fn) {
 								cache[key].splice(i, 1);
 							}
 						}
@@ -347,6 +347,7 @@
 								return;
 							}
 							if (last === 'last') {
+								offlineStack.length && offlineStack[0]()
 							} else {
 								each(offlineStack, function () {
 									this();
@@ -403,5 +404,4 @@
 		}();
 		return Event;
 	})();
-
 </script>
